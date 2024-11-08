@@ -10,6 +10,14 @@ This setup includes two main components:
 
 2. **dnsmasq** - Acts as a DHCP proxy in this setup, handling PXE boot requests only. It communicates with the network’s existing DHCP server to provide IP addresses and enables PXE clients to boot via `netbootxyz`.
 
+## Features
+
+- Does not require edit of existing DHCP Server.
+- Stripped DNSMasq config; proxying only.
+- Does not use bridged mode like all other implementations; uses host networking instead.
+- Only requires 1 container; using builtin TFTP of dnsmsaq.
+- Logs dhcp queries to stdout to make docker logs easy.
+
 ## Setup
 
 ### Prerequisites
