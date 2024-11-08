@@ -9,5 +9,4 @@ services:
       - NET_ADMIN
     volumes:
       - ./dnsmasq.conf:/etc/dnsmasq.conf
-#      - ./tftpboot:/tftpboot
     restart: unless-stopped
