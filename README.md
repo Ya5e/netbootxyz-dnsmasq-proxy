@@ -60,12 +60,15 @@ dhcp-no-override
 
 ### Explanation of Key `dnsmasq` Settings
 
-- `port=0`: Disables DNS functionality.
-- `log-dhcp`: Enables DHCP logging.
-- `enable-tftp` and `tftp-root`: Enables TFTP server and sets the root directory.
-- `dhcp-range=192.168.1.0,proxy`: Configures `dnsmasq` in DHCP proxy mode, forwarding DHCP requests while intercepting PXE boot requests. Please edit `dhcp-range=` to reflect your network.
-- `pxe-service`: Specifies PXE boot for BIOS (X86PC) and UEFI (X86-64_EFI) clients.
-- `dhcp-no-override`: Prevents overriding existing PXE configurations.
+| Setting                            | Description                                                                                                                           |
+|------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| `port=0`                           | Disables DNS functionality.                                                                                                           |
+| `log-dhcp`                         | Enables verbose DHCP logging.                                                                                                         |
+| `enable-tftp` and `tftp-root`      | Enables the TFTP server and sets the root directory.                                                                                  |
+| `dhcp-range=192.168.1.0,proxy`     | Configures `dnsmasq` in DHCP proxy mode, forwarding DHCP requests while intercepting PXE boot requests. Adjust this for your network.|
+| `pxe-service`                      | Specifies PXE boot options for BIOS (X86PC) and UEFI (X86-64_EFI) clients.                                                           |
+| `dhcp-no-override`                 | Prevents the DHCP server from overriding existing PXE configurations, ensuring consistent boot settings.                             |
+
 
 ### Usage
 
