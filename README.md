@@ -60,15 +60,37 @@ dhcp-no-override
 
 ### Explanation of Key `dnsmasq` Settings
 
-- **port=0**: Disables DNS functionality.
-- **log-dhcp**: Enables DHCP logging.
-- **enable-tftp** and **tftp-root**: Enables TFTP server and sets the root directory.
-- dhcp-range=192.168.1.0,proxy**: Configures `dnsmasq` in DHCP proxy mode, forwarding DHCP requests while intercepting PXE boot requests. Please edit `dhcp-range=` to reflect your network.
-- **pxe-service**: Specifies PXE boot for BIOS (X86PC) and UEFI (X86-64_EFI) clients.
-- **dhcp-no-override**: Prevents overriding existing PXE configurations.
+- `port=0`: Disables DNS functionality.
+- `log-dhcp`: Enables DHCP logging.
+- `enable-tftp` and `tftp-root`: Enables TFTP server and sets the root directory.
+- `dhcp-range=192.168.1.0,proxy`: Configures `dnsmasq` in DHCP proxy mode, forwarding DHCP requests while intercepting PXE boot requests. Please edit `dhcp-range=` to reflect your network.
+- `pxe-service`: Specifies PXE boot for BIOS (X86PC) and UEFI (X86-64_EFI) clients.
+- `dhcp-no-override`: Prevents overriding existing PXE configurations.
 
 ### Usage
 
+##### Start
+
 ```
 docker-compose up -d
+
+```
+##### View logs (dnsmasq/netbootxyz)
+
+```
+docker logs netbootxyz 
+
+```
+##### Access netbootxyz web application
+
+```
+http://localhost:3000 
+
+```
+
+##### Validate network traffic (DHCP, TFTP)
+
+```
+docker exec -it netbootxyz /bin/bash -c "apk add tcpdump; tcpdump -i wlan0 port 67 or port 68"
+
 ```
